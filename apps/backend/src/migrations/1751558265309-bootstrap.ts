@@ -41,7 +41,7 @@ export class Bootstrap1751558265309 implements MigrationInterface {
       BEGIN
         UPDATE url
         SET clickCount = clickCount + 1
-        WHERE shortUrl = NEW.url_shortUrl;
+        WHERE "shortUrl" = NEW.url_shortUrl;
         RETURN NEW;
       END;
       $$ LANGUAGE plpgsql;

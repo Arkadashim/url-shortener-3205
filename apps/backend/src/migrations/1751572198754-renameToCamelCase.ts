@@ -51,7 +51,7 @@ export class RenameToCamelCase1751572198754 implements MigrationInterface {
          BEGIN
            UPDATE url
            SET "clickCount" = "clickCount" + 1
-           WHERE shortUrl = NEW."url_shortUrl";
+           WHERE "shortUrl" = NEW."url_shortUrl";
            RETURN NEW;
          END;
          $$ LANGUAGE plpgsql;
@@ -125,7 +125,7 @@ export class RenameToCamelCase1751572198754 implements MigrationInterface {
          BEGIN
            UPDATE url
            SET clickcount = clickcount + 1
-           WHERE shortUrl = NEW.url_shorturl;
+           WHERE "shortUrl" = NEW.url_shorturl;
            RETURN NEW;
          END;
          $$ LANGUAGE plpgsql;

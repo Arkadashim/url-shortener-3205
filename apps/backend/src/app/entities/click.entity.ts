@@ -1,10 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Url } from './url.entity';
 
 @Entity('clicks')
 export class Click {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id: number;
 
   @Column()
   ipAddress!: string;
@@ -16,5 +16,6 @@ export class Click {
   clickedAt?: Date;
 
   @ManyToOne(() => Url, (url) => url.clicks)
+  @JoinColumn({ name: 'url_shortUrl' })
   url?: Url;
 }

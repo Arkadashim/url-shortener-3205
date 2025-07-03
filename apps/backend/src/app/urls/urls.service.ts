@@ -70,11 +70,7 @@ export class UrlsService {
       throw new NotFoundException('Short URL has expired');
     }
 
-    const click = this.clickRepository.create({
-      ipAddress,
-      url,
-    });
-    await this.clickRepository.save(click); // Триггер обновит clickCount
+    await this.clickRepository.save({ ipAddress, url_shortUrl: url.shortUrl }); // Триггер обновит clickCount
 
     return url;
   }
