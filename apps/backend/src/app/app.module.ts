@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
+import { UrlsModule } from './urls/urls.module';
 
 @Module({
-  imports: [],
-  controllers: [],
-  providers: [],
+  imports: [UrlsModule],
 })
 export class AppModule {}
