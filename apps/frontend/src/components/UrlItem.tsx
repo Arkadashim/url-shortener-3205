@@ -2,6 +2,8 @@ import { type Analytics, type ShortUrl } from '@url-shortener/shared/';
 import React, { useState } from 'react';
 import { deleteUrl, getAnalytics } from '../api';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 interface UrlItemProps {
   url: ShortUrl;
   onDelete: () => void;
@@ -39,9 +41,9 @@ const UrlItem: React.FC<UrlItemProps> = ({
       <p>
         <strong>Short URL:</strong>{' '}
         <a
-          href={`http://localhost:3000/${url.shortUrl}`}
+          href={`${API_BASE_URL}/${url.shortUrl}`}
           target="_blank"
-        >{`http://localhost:3000/${url.shortUrl}`}</a>
+        >{`${url.shortUrl}`}</a>
       </p>
       <p>
         <strong>Original URL:</strong>{' '}
