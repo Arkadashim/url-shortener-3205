@@ -24,12 +24,14 @@ const UrlItem: React.FC<UrlItemProps> = ({
   };
 
   const handleDelete = async () => {
-    await deleteUrl(url.shortUrl).catch((err) =>
-      setError(err?.response?.data?.message || 'Failed to delete URL')
-    );
-
-    setSuccess('URL deleted successfully');
-    onDelete();
+    await deleteUrl(url.shortUrl)
+      .then(() => {
+        setSuccess('URL deleted successfully');
+        onDelete();
+      })
+      .catch((err) =>
+        setError(err?.response?.data?.message || 'Failed to delete URL')
+      );
   };
 
   return (
