@@ -116,6 +116,13 @@ button.delete:hover {
   margin-top: 32px;
 }
 
+.link-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .url-item {
   border: 1px solid #ddd;
   padding: 16px;

@@ -40,16 +40,20 @@ const UrlItem: React.FC<UrlItemProps> = ({
     <li className="url-item">
       <p>
         <strong>Short URL:</strong>{' '}
-        <a
-          href={`${API_BASE_URL}/${url.shortUrl}`}
-          target="_blank"
-        >{`${url.shortUrl}`}</a>
+        <div className="link-container">
+          <a
+            href={`${API_BASE_URL}/${url.shortUrl}`}
+            target="_blank"
+          >{`${url.shortUrl}`}</a>
+        </div>
       </p>
       <p>
         <strong>Original URL:</strong>{' '}
-        <a href={url.originalUrl} target="_blank">
-          {url.originalUrl}
-        </a>
+        <div className="link-container">
+          <a href={url.originalUrl} target="_blank">
+            {url.originalUrl}
+          </a>
+        </div>
       </p>
       <p>
         <strong>Created:</strong> {new Date(url.createdAt).toLocaleString()}
