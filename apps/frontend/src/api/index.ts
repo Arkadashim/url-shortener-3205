@@ -1,5 +1,5 @@
 import axios from "axios";
-import { type ShortUrl, type CreateUrlPayload, type Analytics } from "../src/types";
+import { type ShortUrl, type CreateUrlPayload, type Analytics } from "../types";
 
 const API_BASE_URL = "http://localhost:3000";
 
