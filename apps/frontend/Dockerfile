@@ -10,6 +10,7 @@ FROM node:18
 
    RUN npm install
    RUN npm install -g nx@latest
+   RUN npx nx reset
 
    EXPOSE 4200
 
