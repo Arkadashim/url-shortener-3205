@@ -1,0 +1,77 @@
+import React, { useState } from 'react';
+import { type ShortUrl, type Analytics } from '../types';
+import { getAnalytics, deleteUrl } from '../api';
+
+interface UrlItemProps {
+  url: ShortUrl;
+  onDelete: () => void;
+  setError: (error: string) => void;
+  setSuccess: (success: string) => void;
+}
+
+const UrlItem: React.FC<UrlItemProps> = ({
+  url,
+  onDelete,
+  setError,
+  setSuccess,
+}) => {
+  const [analytics, setAnalytics] = useState<Analytics | null>(null);
+
+  const handleAnalytics = async () => {
+    await getAnalytics(url.shortUrl)
+      .then((data) => setAnalytics(data))
+      .catch(() => setError('Failed to fetch'));
+  };
+
+  const handleDelete = async () => {
+    await deleteUrl(url.shortUrl).catch((err) =>
+      setError(err?.response?.data?.message || 'Failed to delete URL')
+    );
+
+    setSuccess('URL deleted successfully');
+    onDelete();
+  };
+
+  return (
+    <li className="url-item">
+      <p>
+        <strong>Short URL:</strong>{' '}
+        <a
+          href={`http://localhost:3000/${url.shortUrl}`}
+          target="_blank"
+        >{`http://localhost:3000/${url.shortUrl}`}</a>
+      </p>
+      <p>
+        <strong>Original URL:</strong>{' '}
+        <a href={url.originalUrl} target="_blank">
+          {url.originalUrl}
+        </a>
+      </p>
+      <p>
+        <strong>Created:</strong> {new Date(url.createdAt).toLocaleString()}
+      </p>
+      <p>
+        <strong>Clicks:</strong> {url.clickCount}
+      </p>
+      <div className="button-group">
+        <button className="analytics" onClick={handleAnalytics}>
+          View Analytics
+        </button>
+        <button className="delete" onClick={handleDelete}>
+          Delete
+        </button>
+      </div>
+      {analytics && (
+        <div className="analytics-data">
+          <p>
+            <strong>Analytics:</strong>
+          </p>
+          <p>Clicks: {analytics.clickCount}</p>
+          <p>Last 5 IPs: {analytics.lastIps.join(', ') || 'None'}</p>
+        </div>
+      )}
+    </li>
+  );
+};
+
+export default UrlItem;
