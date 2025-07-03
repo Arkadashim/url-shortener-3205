@@ -11,7 +11,7 @@ import {
 import { type CreateUrlPayload } from '@url-shortener/shared';
 import { UrlsService } from './urls.service';
 
-@Controller('urls')
+@Controller()
 export class UrlsController {
   constructor(private readonly urlsService: UrlsService) {}
 
@@ -20,7 +20,7 @@ export class UrlsController {
     return this.urlsService.createShortUrl(payload);
   }
 
-  @Get('')
+  @Get('urls')
   async get() {
     return await this.urlsService.get();
   }
