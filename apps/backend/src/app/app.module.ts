@@ -20,7 +20,8 @@ import { UrlsModule } from './urls/urls.module';
         password: configService.get<string>('DB_PASSWORD', 'postgres'),
         database: configService.get<string>('DB_NAME', 'url_shortener'),
         entities: ['apps/backend/src/**/*.entity{.ts,.js}'],
-        synchronize: true, // Только для разработки!
+        synchronize: false,
+        migrationsRun: true,
       }),
     }),
     UrlsModule,
