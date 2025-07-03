@@ -1,7 +1,7 @@
-import axios from "axios";
-import { type ShortUrl, type CreateUrlPayload, type Analytics } from "../types";
+import axios from 'axios';
+import { type ShortUrl, type CreateUrlPayload, type Analytics } from '../types';
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = 'http://localhost:3000';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -10,12 +10,12 @@ const api = axios.create({
 export const createShortUrl = async (
   payload: CreateUrlPayload
 ): Promise<ShortUrl> => {
-  const response = await api.post("/shorten", payload);
+  const response = await api.post('/shorten', payload);
   return response.data;
 };
 
 export const getUrls = async (): Promise<ShortUrl[]> => {
-  const response = await api.get("/urls");
+  const response = await api.get('/urls');
   return response.data;
 };
 
