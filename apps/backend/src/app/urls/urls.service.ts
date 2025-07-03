@@ -102,7 +102,7 @@ export class UrlsService {
     }
 
     const clicks = await this.clickRepository.find({
-      where: { url: { shortUrl } },
+      where: { url_shortUrl: shortUrl },
       order: { clickedAt: 'DESC' },
       take: 5,
       select: ['ipAddress'],
@@ -110,7 +110,7 @@ export class UrlsService {
 
     return {
       clickCount: url.clickCount ?? 0,
-      recentIps: clicks.map((click) => click.ipAddress),
+      lastIps: clicks.map((click) => click.ipAddress),
     };
   }
 
