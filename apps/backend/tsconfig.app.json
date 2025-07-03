@@ -6,10 +6,6 @@
     "target": "es2022",
     "moduleResolution": "node",
     "baseUrl": "src",
-    "paths": {
-      "@entities/*": ["app/entities/*"],
-      "@migrations/*": ["migrations/*"]
-    },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "types": ["node"]
