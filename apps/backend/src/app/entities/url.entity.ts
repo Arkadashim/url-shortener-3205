@@ -1,7 +1,7 @@
 import { Column, Entity, Index, OneToMany, PrimaryColumn } from 'typeorm';
 import { Click } from './click.entity';
 
-@Entity('urls')
+@Entity('url')
 @Index('idx_urls_short_url', ['shortUrl'], { unique: true })
 @Index('idx_urls_created_at', ['createdAt'])
 export class Url {
