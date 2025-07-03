@@ -1,6 +1,6 @@
+import { type CreateUrlPayload } from '@url-shortener/shared/';
 import React, { useState } from 'react';
 import { createShortUrl } from '../api';
-import { type CreateUrlPayload } from '../types';
 
 interface UrlFormProps {
   onSuccess: () => void;

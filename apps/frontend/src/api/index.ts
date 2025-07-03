@@ -1,5 +1,9 @@
+import {
+  type Analytics,
+  type CreateUrlPayload,
+  type ShortUrl,
+} from '@url-shortener/shared/';
 import axios from 'axios';
-import { type ShortUrl, type CreateUrlPayload, type Analytics } from '../types';
 
 const API_BASE_URL = process.env.API_BASE_URL;
 

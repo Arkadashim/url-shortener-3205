@@ -1,6 +1,6 @@
+import { type Analytics, type ShortUrl } from '@url-shortener/shared/';
 import React, { useState } from 'react';
-import { type ShortUrl, type Analytics } from '../types';
-import { getAnalytics, deleteUrl } from '../api';
+import { deleteUrl, getAnalytics } from '../api';
 
 interface UrlItemProps {
   url: ShortUrl;

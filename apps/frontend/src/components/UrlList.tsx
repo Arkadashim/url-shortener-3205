@@ -1,5 +1,5 @@
+import { type ShortUrl } from '@url-shortener/shared/';
 import React from 'react';
-import { type ShortUrl } from '../types';
 import UrlItem from './UrlItem';
 
 interface UrlListProps {

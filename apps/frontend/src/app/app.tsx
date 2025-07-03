@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { type ShortUrl } from '@url-shortener/shared';
+import React, { useEffect, useState } from 'react';
+import { getUrls } from '../api';
 import UrlForm from '../components/UrlForm';
 import UrlList from '../components/UrlList';
-import { getUrls } from '../api';
-import { type ShortUrl } from '../types';
 import '../styles/index.css';
 
 const App: React.FC = () => {
@@ -12,7 +12,11 @@ const App: React.FC = () => {
 
   const fetchUrls = async () => {
     await getUrls()
-      .then((urls) => setUrls(urls))
+      .then((urls) => {
+        Array.isArray(urls)
+          ? setUrls(urls)
+          : setError('Incorrect server response!');
+      })
       .catch(() => setError('Failed to fetch'));
   };
 
