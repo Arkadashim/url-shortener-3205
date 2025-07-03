@@ -21,6 +21,7 @@ import { UrlsModule } from './urls/urls.module';
         database: configService.get<string>('DB_NAME', 'url_shortener'),
         entities: ['apps/backend/src/**/*.entity{.ts,.js}'],
         synchronize: false,
+        migrations: ['apps/backend/src/migrations/*.ts'],
         migrationsRun: true,
       }),
     }),
