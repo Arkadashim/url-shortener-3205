@@ -1,16 +1,29 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "types": ["node"],
-    "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
-    "experimentalDecorators": true,
+    "outDir": "./dist",
+    "module": "commonjs",
+    "target": "es2022",
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "paths": {
+      "@entities/*": ["app/entities/*"],
+      "@migrations/*": ["migrations/*"]
+    },
     "emitDecoratorMetadata": true,
-    "target": "es2021"
+    "experimentalDecorators": true,
+    "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
-  "exclude": [],
+  "include": [
+    "src/**/*",
+    "src/app/entities/**/*.ts",
+    "src/migrations/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ],
   "references": [
     {
       "path": "../../libs/shared/tsconfig.lib.json"

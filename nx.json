@@ -29,6 +29,16 @@
       "exclude": ["libs/shared/*"]
     },
     {
+      "plugin": "@nx/js/typescript",
+      "include": ["apps/backend/*"],
+      "options": {
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.app.json"
+        }
+      }
+    },
+    {
       "plugin": "@nx/react/router-plugin",
       "options": {
         "buildTargetName": "build",
@@ -66,16 +76,6 @@
         "typecheck": {
           "targetName": "typecheck"
         }
-      }
-    },
-    {
-      "plugin": "@nx/webpack/plugin",
-      "options": {
-        "buildTargetName": "build",
-        "serveTargetName": "serve",
-        "previewTargetName": "preview",
-        "buildDepsTargetName": "build-deps",
-        "watchDepsTargetName": "watch-deps"
       }
     }
   ],
