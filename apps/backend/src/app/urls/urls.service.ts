@@ -56,6 +56,10 @@ export class UrlsService {
     return url;
   }
 
+  async get() {
+    return await this.urlRepository.find();
+  }
+
   async getOriginalUrl(shortUrl: string, ipAddress: string) {
     const url = await this.urlRepository.findOne({ where: { shortUrl } });
     if (!url) {
