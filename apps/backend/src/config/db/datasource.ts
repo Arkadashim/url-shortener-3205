@@ -1,4 +1,3 @@
-import { join } from 'path';
 import { DataSource } from 'typeorm';
 
 export const AppDataSource = new DataSource({
@@ -8,9 +7,8 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME || 'postgres',
   password: process.env.DB_PASSWORD || 'postgres',
   database: process.env.DB_NAME || 'url_shortener',
-  entities: [join(__dirname, 'apps/backend/src/**/*.entity{.ts,.js}')],
-  // migrations: [join(__dirname, 'apps/backend/src/migrations/**/*{.ts,.js}')],
-  // migrations: ['apps/backend/src/migrations/**/*{.ts,.js}'],
+  entities: ['apps/backend/dist/src/app/entities/*.js'],
+  migrations: ['apps/backend/dist/src/migrations/*.js'],
   synchronize: false,
   migrationsRun: true,
   logging: true,
